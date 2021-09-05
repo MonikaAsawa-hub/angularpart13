@@ -1,0 +1,58 @@
+<div class="container d-flex" style="margin-bottom: 55px;margin-top: 10px;">
+    <div class="item">
+        <a (click)="filterData('')">
+            <img style="width: 200px;"
+                src="https://rukminim1.flixcart.com/flap/128/128/image/f15c02bfeb02d15d.png?q=100" alt="">
+            <h6 style="text-align: center;">All products</h6>
+        </a>
+    </div>
+    <div class="item">
+        <a (click)="filterData('electronics')">
+            <img style="width: 200px;"
+                src="https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100" alt="">
+            <h6 style="text-align: center;">Electronics</h6>
+        </a>
+    </div>
+    <div class="item">
+        <a (click)="filterData('fashion')">
+            <img style="width: 200px;"
+                src="https://rukminim1.flixcart.com/flap/128/128/image/82b3ca5fb2301045.png?q=100" alt="">
+            <h6 style="text-align: center;">Fashion</h6>
+        </a>
+    </div>
+    <div class="item">
+        <a (click)="filterData('jewelery')">
+            <img style="width: 143px;height:120px; margin-top: 41px;"
+                src="https://rukminim1.flixcart.com/image/580/696/kkh6zrk0/jewellery-set/o/w/z/gt-ns-862-matushri-art-original-imafzt9teacakjyn.jpeg?q=50"
+                alt="">
+            <h6 style="text-align: center;padding-top: 38px;">Jewllery</h6>
+        </a>
+    </div>
+</div>
+<div class="container">
+    <form #searchForm="ngForm">
+        <div class="col-sm-3">
+            <input type="text" class="form-control" placeholder="search here" name="searchTerm" autocomplete="off"
+                ngModel>
+        </div>
+    </form>
+    <br>
+    <hr><br>
+    <div>
+        <h5>Search Results...</h5>
+    </div>
+    <div class="row mt-3">
+        <ng-container *ngFor="let item of filterCategoryItem | filter:searchKey:'title'">
+            <div class="card col-md-3">
+                <img src="{{item.image}}" alt="">
+                <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
+                    {{item.title}}</h5>
+                <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
+                    {{item.description}}</p>
+                <p><strong>Price:</strong> ${{item.price}}</p>
+                <button class="btn btn-primary" (click)=addtocart(item)>Add to cart</button>
+            </div>
+        </ng-container>
+
+    </div>
+</div>
